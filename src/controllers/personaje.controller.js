@@ -6,7 +6,6 @@ export const getPersonajes = (req, res)=> {
     .getPersonajes()
     .then((result) => {
         res.status(200).json({
-            message: "Personajes obtenidos correctamente",
             data: result[0]
         })
     })
@@ -21,7 +20,6 @@ export const getPersonaje = (req, res)=> {
     .getPersonaje(id)
     .then((result) => {
         res.status(200).json({
-            message: "Personaje obtenido correctamente",
             data: result[0],
         })
     })
@@ -36,7 +34,6 @@ export const createPersonaje = (req, res)=> {
     .createPersonaje(personaje)
     .then(() => {
         res.status(200).json({
-            message: "Personaje registrado correctamente",
             data: personaje
         })
     })
@@ -52,7 +49,6 @@ export const updatePersonaje = (req, res)=> {
     .updatePersonaje(id, personaje)
     .then(() => {
         res.status(200).json({
-            message: "Personaje actualizado correctamente",
             data: personaje
         })
     })
@@ -68,7 +64,6 @@ export const deletePersonaje = (req, res)=> {
     .deletePersonaje(id)
     .then(() => {
         res.status(200).json({
-            message: "Personaje eliminado correctamente"
         })
     })
     .catch((err) => {
