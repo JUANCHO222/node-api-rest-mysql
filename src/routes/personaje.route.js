@@ -14,10 +14,10 @@ personajeRouter.get("/", getPersonajes )
 
 personajeRouter.get("/:id", getPersonaje)
 
-personajeRouter.post("/", createPersonaje)
+personajeRouter.post("/add", createPersonaje)
 
-personajeRouter.put("/:id", updatePersonaje)
+personajeRouter.put("/update/:id", updatePersonaje)
 
-personajeRouter.delete("/:id", deletePersonaje)
+personajeRouter.delete("/delete/:id", deletePersonaje)
 
 export default personajeRouter;
