@@ -23,11 +23,11 @@ export const getPersonaje = (id) =>{
 
 export const createPersonaje = (personaje) =>{
     return new Promise((resolve, reject)=>{
-        const query = "INSERT INTO personaje (idPersonaje, nombre, email) VALUES (?, ?, ?)";
+        const query = "INSERT INTO personaje (nombre, email) VALUES (?, ?)";
 
-    const {idPersonaje, nombre, email} = personaje;
+    const {nombre, email} = personaje;
 
-        db.execute(query, [idPersonaje, nombre, email])
+        db.execute(query, [nombre, email])
         .then((result)=> resolve( result ))
         .catch((err)=> reject(err))
     })
