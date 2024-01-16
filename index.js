@@ -3,9 +3,6 @@ const bodyParser = require('body-parser')
 const mysql = require('mysql2')
 require('dotenv').config()
 
-
-
-
 const app = express()
 
 app.use(function(req, res, next) {
@@ -50,7 +47,7 @@ app.get('/personajes', (req, res) => {
         }
     })
 })
-   
+
 app.get('/personaje/:id', (req, res) => {
     const { id } = req.params
 
@@ -69,7 +66,9 @@ app.get('/personaje/:id', (req, res) => {
 app.post('/personaje/add', (req, res) => {
     const usuario = {
         nombre: req.body.nombre,
-        email: req.body.email        
+        edad: req.body.edad ,
+        ocupacion: req.body.ocupacion,
+        capitulo: req.body.capitulo   
     }
 
     const query = `INSERT INTO personaje SET ?`
@@ -82,9 +81,9 @@ app.post('/personaje/add', (req, res) => {
 
 app.put('/personaje/update/:id', (req, res) => {
     const { id } = req.params
-    const { nombre, email } = req.body
+    const { nombre, edad, ocupacion, capitulo } = req.body
 
-    const query = `UPDATE personaje SET nombre='${nombre}', email='${email}' WHERE idPersonaje='${id}';`
+    const query = `UPDATE personaje SET nombre='${nombre}', edad='${edad}', ocupacion='${ocupacion}', capitulo='${capitulo}' WHERE idPersonaje='${id}';`
     connection.query(query, (error) => {
         if(error) return console.log(error.message)
 
