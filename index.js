@@ -35,9 +35,9 @@ app.get('/', (req, res) => {
     res.send('API')
 })
 
-app.get('/usuarios', (req, res) => {
+app.get('/personajes', (req, res) => {
 
-    const query = 'SELECT * FROM usuarios;'
+    const query = 'SELECT * FROM personaje;'
     connection.query(query, (error, resultado) => {
         if(error) return console.error(error.message)
 
@@ -51,10 +51,10 @@ app.get('/usuarios', (req, res) => {
     })
 })
    
-app.get('/usuario/:id', (req, res) => {
+app.get('/personaje/:id', (req, res) => {
     const { id } = req.params
 
-    const query = `SELECT * FROM usuarios WHERE idUsuario=${id};`
+    const query = `SELECT * FROM personaje WHERE idPersonaje=${id};`
     connection.query(query, (error, resultado) => {
         if(error) return console.error(error.message)
 
@@ -66,13 +66,13 @@ app.get('/usuario/:id', (req, res) => {
     })
 })
 
-app.post('/usuario/add', (req, res) => {
+app.post('/personaje/add', (req, res) => {
     const usuario = {
         nombre: req.body.nombre,
         email: req.body.email        
     }
 
-    const query = `INSERT INTO usuarios SET ?`
+    const query = `INSERT INTO personaje SET ?`
     connection.query(query, usuario, (error) => {
         if(error) return console.error(error.message)
 
@@ -80,11 +80,11 @@ app.post('/usuario/add', (req, res) => {
     })
 })
 
-app.put('/usuario/update/:id', (req, res) => {
+app.put('/personaje/update/:id', (req, res) => {
     const { id } = req.params
     const { nombre, email } = req.body
 
-    const query = `UPDATE usuarios SET nombre='${nombre}', email='${email}' WHERE idUsuario='${id}';`
+    const query = `UPDATE personaje SET nombre='${nombre}', email='${email}' WHERE idPersonaje='${id}';`
     connection.query(query, (error) => {
         if(error) return console.log(error.message)
 
@@ -92,10 +92,10 @@ app.put('/usuario/update/:id', (req, res) => {
     })
 })
 
-app.delete('/usuario/delete/:id', (req, res) => {
+app.delete('/personaje/delete/:id', (req, res) => {
     const { id } = req.params
 
-    const query = `DELETE FROM usuarios WHERE idUsuario=${id};`
+    const query = `DELETE FROM personaje WHERE idPersonaje=${id};`
     connection.query(query, (error) => {
         if(error) return console.log(error.message)
 
