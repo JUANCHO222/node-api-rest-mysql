@@ -66,7 +66,6 @@ app.get('/personaje/:id', (req, res) => {
 app.post('/personaje/add', (req, res) => {
     const usuario = {
         nombre: req.body.nombre,
-        edad: req.body.edad ,
         ocupacion: req.body.ocupacion,
         capitulo: req.body.capitulo   
     }
@@ -81,9 +80,9 @@ app.post('/personaje/add', (req, res) => {
 
 app.put('/personaje/update/:id', (req, res) => {
     const { id } = req.params
-    const { nombre, edad, ocupacion, capitulo } = req.body
+    const { nombre, ocupacion, capitulo } = req.body
 
-    const query = `UPDATE personaje SET nombre='${nombre}', edad='${edad}', ocupacion='${ocupacion}', capitulo='${capitulo}' WHERE idPersonaje='${id}';`
+    const query = `UPDATE personaje SET nombre='${nombre}',ocupacion='${ocupacion}', capitulo='${capitulo}' WHERE idPersonaje='${id}';`
     connection.query(query, (error) => {
         if(error) return console.log(error.message)
 
